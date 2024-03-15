@@ -1,0 +1,22 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+  align-items: center; /* Centrer verticalement */
+  justify-items: center; /* Centrer horizontalement */
+  font-family: 'Montserrat', sans-serif; /* Exemple de police esthétique */
+}
+
+
+.div1 { grid-area: 1 / 2 / 2 / 4; }
+.div2 { grid-area: 2 / 2 / 3 / 3; }
+.div3 { grid-area: 2 / 3 / 3 / 4; }
+.div4 { grid-area: 3 / 2 / 4 / 4; }
+.div5 { grid-area: 4 / 2 / 5 / 3; }
+.div6 { grid-area: 4 / 3 / 5 / 4; }
+.div7 { grid-area: 5 / 2 / 6 / 4; }
+.div8 { grid-area: 6 / 2 / 7 / 4; }
+.div9 { grid-area: 7 / 2 / 8 / 4; }
+

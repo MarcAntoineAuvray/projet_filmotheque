@@ -10,4 +10,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'appli_filmotheque';
+  ngOnInit() {
+    "aaaa"
+      // console.log("aaaaaa")
+
+  }
+
 }
+
