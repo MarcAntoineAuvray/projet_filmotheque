@@ -58,12 +58,12 @@ def movie_filter(clean_content_data: pandas.DataFrame, new_index_col_name: str =
     return movie_data[movie_data[year_col_name] < next_year]
 
 
-def get_total_movie_data(path: str = data_path, total_movie_data_name: str = total_movie_data_name,
-                         id_col_name: str = 'id') -> pandas.DataFrame:
-    return pandas.read_csv(f'{path}{total_movie_data_name}.csv')
+def get_movie_data(movie_data_name: str, path: str = data_path,
+                   id_col_name: str = 'id') -> pandas.DataFrame:
+    return pandas.read_csv(f'{path}{movie_data_name}.csv')
 
 
-def update_total_movie_data(new_data: pandas.DataFrame, old_data: pandas.DataFrame, id_col_name: str = 'id') -> pandas.DataFrame:
+def update_movie_data(new_data: pandas.DataFrame, old_data: pandas.DataFrame, id_col_name: str = 'id') -> pandas.DataFrame:
     new_data_copy, old_data_copy = new_data.copy(), old_data.copy()
     if id_col_name in list(new_data_copy.columns):
         new_data_copy.set_index(id_col_name, drop=True, inplace=True)
@@ -80,15 +80,14 @@ def update_total_movie_data(new_data: pandas.DataFrame, old_data: pandas.DataFra
         return pandas.concat([old_data_copy, new_data_copy.loc[new_movies_id]], axis=0)
 
 
-def save_updated_total_movie_data(updated_data: pandas.DataFrame, path: str = data_path,
-                                  total_movie_data_name: str = 'total_movie_data') -> None:
-    updated_data.to_csv(f'{path}{total_movie_data_name}.csv')
+def save_updated_movie_data(updated_data: pandas.DataFrame, movie_data_name: str, path: str = data_path) -> None:
+    updated_data.to_csv(f'{path}{movie_data_name}.csv')
 
 
 
-old_m: pandas.DataFrame = get_total_movie_data(path=data_path,
-                                                                total_movie_data_name=total_movie_data_name,
-                                                                id_col_name='id')
+# old_m: pandas.DataFrame = get_movie_data(path=data_path,
+#                                                                 movie_data_name=total_movie_data_name,
+#                                                                 id_col_name='id')
 m_df: pandas.DataFrame = movie_filter(data_preprocessing(content_data=response_to_df(response=get_imbd_response(api_url=my_api_url,
                                                                                                                 key_words='movie'))))
 
